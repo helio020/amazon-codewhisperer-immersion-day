@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Form, Image, Row, Col, Button } from 'react-bootstrap';
-import { ReactDOM } from 'react-dom';
+// import { ReactDOM } from 'react-dom';
 
 /**
  * Calculate the volume of a cube
@@ -18,20 +18,124 @@ export function calculateCubeVolume(dimensions) {
 }
 
 /**
- * <tbd> please add more shapes
+ * Calculate the volume of a sphere
+ * 
+ * The function takes an object dimensions with property radius, and
+ * calculates the volume of the sphere. It uses the formula:
+ * 
+ * volume = 4/3 * pi * radius * radius * radius
+ * 
+ * @param {object} dimensions with property radius
+ * @example calculateSphereVolume({radius: 10}
  */
+export function calculateSphereVolume(dimensions) {
+  return (4/3) * Math.PI * dimensions.radius * dimensions.radius * dimensions.radius;
+}
 
+/**
+ * Calculate the volume of a cylinder
+ * 
+ * The function takes an object dimensions with property radius and height, and
+ * calculates the volume of the cylinder. It uses the formula:
+ * 
+ * volume = pi * radius * radius * height
+ * 
+ * @param {object} dimensions with property radius and height
+ * @example calculateCylinderVolume({radius: 10, height: 5}
+ */
+export function calculateCylinderVolume(dimensions) {
+  return Math.PI * dimensions.radius * dimensions.radius * dimensions.height;
+}
+
+/**
+ * Calculate the volume of a cone
+ * 
+ * The function takes an object dimensions with property radius and height, and
+ * calculates the volume of the cone. It uses the formula:
+ * 
+ * volume = 1/3 * pi * radius * radius * height
+ * 
+ * @param {object} dimensions with property radius and height
+ * @example calculateConeVolume({radius: 10, height: 5}
+ */
+ export function calculateConeVolume(dimensions) {
+  return (1/3) * Math.PI * dimensions.radius * dimensions.radius * dimensions.height;
+}
+
+/**
+ * Calculate the volume of a cuboid
+ * 
+ * The function takes an object dimensions with property length, width and height, and
+ * calculates the volume of the cuboid. It uses the formula:
+ * 
+ * volume = length * width * height
+ * 
+ * @param {object} dimensions with property length, width and height
+ * @example calculateCuboidVolume({length: 10, width: 5, height: 2}
+ */
+ export function calculateCuboidVolume(dimensions) {
+  return dimensions.length * dimensions.width * dimensions.height;
+}
+
+/**
+ * Calculate the volume of a pyramid
+ * 
+ * The function takes an object dimensions with property length, width and height, and
+ * calculates the volume of the pyramid. It uses the formula:
+ * 
+ * volume = 1/3 * length * width * height
+ * 
+ * @param {object} dimensions with property length, width and height
+ * @example calculatePyramidVolume({length: 10, width: 5, height: 2}
+ */
+ export function calculatePyramidVolume(dimensions) {
+  return (1/3) * dimensions.length * dimensions.width * dimensions.height;
+}
 
 // define list of shapes and their corresponding parameters to calculate volumes
 const shapes = {
     Cube: {
-      name:         'Cube', 
-      dimensions:   ['length'],
-      formulaText:  'length * length * length',
-      image:        'cube.svg',
-      function:     calculateCubeVolume,
+      name: 'Cube', 
+      dimensions: ['length'],
+      formulaText: 'length * length * length',
+      image: 'cube.svg',
+      function: calculateCubeVolume,
     },
-    // <tbd> once the function above is implemented, please add shape data here
+    Sphere: {
+      name: 'Sphere',
+      dimensions: ['radius'],
+      formulaText: '4/3 * pi * radius * radius * radius',
+      image: 'sphere.svg',
+      function: calculateSphereVolume,
+    },
+    Cylinder: {
+      name: 'Cylinder',
+      dimensions: ['radius', 'height'],
+      formulaText: 'pi * radius * radius * height',
+      image: 'cylinder.svg',
+      function: calculateCylinderVolume,
+    },
+    Cone: {
+      name: 'Cone',
+      dimensions: ['radius', 'height'],
+      formulaText: '1/3 * pi * radius * radius * height',
+      image: 'cone.svg',
+      function: calculateConeVolume,
+    },
+    Cuboid: {
+      name: 'Cuboid',
+      dimensions: ['length', 'width', 'height'],
+      formulaText: 'length * width * height',
+      image: 'cuboid.svg',
+      function: calculateCuboidVolume,
+    },
+    Pyramid: {
+      name: 'Pyramid',
+      dimensions: ['length', 'width', 'height'],
+      formulaText: '1/3 * length * width * height',
+      image: 'pyramid.svg',
+      function: calculatePyramidVolume,
+    },  
 };
 
 // default shape and dimensions for the calculator page

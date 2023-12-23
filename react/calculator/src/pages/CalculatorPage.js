@@ -9,29 +9,46 @@ import { Card, Button } from 'react-bootstrap';
 //   <CalculatorPage />
 
 export default function CalculatorPage() {
-  // internal documentation:
-  //    first: <tbd> please provide more documentation
+  // component state:
+  //    first: string; first value for calculations, use setFirst to change
+  //    lastOperand: string; last operand for calculations, use setLastOperand to change
+  //    second: string; second value for calculations, use setSecond to change
+  //    result: string; result of calculations, use setResult to change
   const [first, setFirst] = useState('');
   const [lastOperand, setLastOperand] = useState('');
   const [second, setSecond] = useState('0');
   const [result, setResult] = useState('');
 
   function performIntegerOperation(first, second, operand) {
-    // <tbd> please provide this function
+    switch (operand) {
+      case 'add':
+        return first + second;
+      case 'sub':
+        return first - second;
+      case 'mul':
+        return first * second;
+      case 'div':
+        return first / second;
+      default:
+        return 0;
+    }
   }
 
   // invoked when clear button is clicked
   const handleClear = () => {
-    // <tbd> please provide this function
+    setFirst('')
+    setLastOperand('')
+    setSecond('0')
+    setResult('')
   }
 
-  // <tbd> add documentation
+  // invoked when a digit button is clicked
   const handleDigit = (digit) => {
     setResult('')
     setSecond(second.toString().replace(/^0+/, '') + digit)
   }
 
-  // <tbd> add documentation
+  // invoked when an operand button is clicked
   const handleOperand = (operand) => {
     if(lastOperand){
       setFirst(Math.floor(performIntegerOperation(parseInt(first), parseInt(second), lastOperand)))
@@ -45,7 +62,7 @@ export default function CalculatorPage() {
     setResult('')
   }
 
-  // <tbd> add documentation
+  // invoked when the equals button is clicked
   const handleEquals = () => {
     if(lastOperand){
       setResult(Math.floor(performIntegerOperation(parseInt(first), parseInt(second), lastOperand)))
@@ -57,7 +74,7 @@ export default function CalculatorPage() {
     setSecond('')
   }
 
-  // <tbd> add documentation
+  // defines the text for the operand buttons
   const operandText = {
     add: '+',
     sub: '-',
